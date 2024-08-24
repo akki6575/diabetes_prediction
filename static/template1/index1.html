@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ML API</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Diabetes Prediction Form</h1>
+    <form method="POST" action="/predict">
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" max="120" required placeholder="Enter your age" title="Enter your age">
+        </div>
+        
+        <div class="form-group">
+            <label>Gender:</label>
+            <div class="radio-group">
+                <div class="radio-option"><input type="radio" id="male" name="gender" value="1" required><label for="male">Male</label></div>
+                <div class="radio-option"><input type="radio" id="female" name="gender" value="0" required><label for="female">Female</label></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Polyuria:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="polyuria-yes" name="polyuria" value="1" required>
+                    <label for="polyuria-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="polyuria-no" name="polyuria" value="0" required>
+                    <label for="polyuria-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Polydipsia(Excessive Thirst):</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="polydipsia-yes" name="polydipsia" value="1" required>
+                    <label for="polydipsia-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="polydipsia-no" name="polydipsia" value="0" required>
+                    <label for="polydipsia-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Sudden Weight Loss:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="sudden_weight_loss-yes" name="sudden_weight_loss" value="1" required>
+                    <label for="sudden_weight_loss-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="sudden_weight_loss-no" name="sudden_weight_loss" value="0" required>
+                    <label for="sudden_weight_loss-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Weakness:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="weakness-yes" name="weakness" value="1" required>
+                    <label for="weakness-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="weakness-no" name="weakness" value="0" required>
+                    <label for="weakness-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Polyphagia (Excessive Hunger):</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="polyphagia-yes" name="polyphagia" value="1" required>
+                    <label for="polyphagia-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="polyphagia-no" name="polyphagia" value="0" required>
+                    <label for="polyphagia-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Genital thrush:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="genital_thrush-yes" name="genital_thrush" value="1" required>
+                    <label for="genital_thrush-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="genital_thrush-no" name="genital_thrush" value="0" required>
+                    <label for="genital_thrush-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Visual Blurring:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="visual_blurring-yes" name="visual_blurring" value="1" required>
+                    <label for="visual_blurring-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="visual_blurring-no" name="visual_blurring" value="0" required>
+                    <label for="visual_blurring-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Itching:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="itching-yes" name="itching" value="1" required>
+                    <label for="itching-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="itching-no" name="itching" value="0" required>
+                    <label for="itching-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Irritability:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="irritability-yes" name="irritability" value="1" required>
+                    <label for="irritability-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="irritability-no" name="irritability" value="0" required>
+                    <label for="irritability-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Delayed Healing:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="delayed_healing-yes" name="delayed_healing" value="1" required>
+                    <label for="delayed_healing-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="delayed_healing-no" name="delayed_healing" value="0" required>
+                    <label for="delayed_healing-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Partial paresis(Muscle Weakness):</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="partial_paresis-yes" name="partial_paresis" value="1" required>
+                    <label for="partial_paresis-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="partial_paresis-no" name="partial_paresis" value="0" required>
+                    <label for="partial_paresis-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Muscle Stiffness:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="muscle_stiffness-yes" name="muscle_stiffness" value="1" required>
+                    <label for="muscle_stiffness-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="muscle_stiffness-no" name="muscle_stiffness" value="0" required>
+                    <label for="muscle_stiffness-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Alopecia:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="alopecia-yes" name="alopecia" value="1" required>
+                    <label for="alopecia-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="alopecia-no" name="alopecia" value="0" required>
+                    <label for="alopecia-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Obesity:</label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="obesity-yes" name="obesity" value="1" required>
+                    <label for="obesity-yes">Yes</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="obesity-no" name="obesity" value="0" required>
+                    <label for="obesity-no">No</label>
+                </div>
+            </div>
+        </div>
+                                                                                        
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
